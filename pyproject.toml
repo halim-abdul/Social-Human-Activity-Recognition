@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "socialhar"
+version = "0.1.0"
+description = "Privacy-aware research on explicitly expressed activities in social text"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = ["numpy>=1.24,<3", "pandas>=2.0,<3", "scikit-learn>=1.3,<2", "scipy>=1.10,<2", "matplotlib>=3.7,<4", "joblib>=1.3,<2"]
+
+[project.optional-dependencies]
+transformers = ["torch>=2.2,<3", "transformers>=4.45,<5", "datasets>=2.19,<4", "accelerate>=0.34,<2"]
+psychology = ["nltk>=3.9,<4", "pingouin>=0.5.5,<0.6", "statsmodels>=0.14,<0.15"]
+dev = ["pytest>=8,<10", "nbformat>=5.10,<6", "nbclient>=0.10,<1", "ipykernel>=6,<8", "ruff>=0.9,<1"]
+
+[project.scripts]
+socialhar = "socialhar.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+[tool.ruff]
+line-length = 100
